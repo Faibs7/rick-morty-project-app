@@ -14,10 +14,11 @@ console.clear();
 // States
 let maxPage = 1;
 let page = 1;
-const searchQuery = "";
+let searchQuery = "";
 
 async function fetchCharacters() {
-  const url = `https://rickandmortyapi.com/api/character/?page=${page}`;
+  let url = `https://rickandmortyapi.com/api/character/?page=${page}`;
+  url += `&name=${searchQuery}`;
   try {
     const response = await fetch(url);
     if (response.ok) {
@@ -75,10 +76,9 @@ prevButton.addEventListener("click", () => {
 
 function searchBarEvent(event) {
   event.preventDefault();
-  console.log(event.target);
+  searchQuery = searchBar.value;
+  fetchCharacters();
+  console.log(searchBar.value);
 }
 
-searchBar.addEventListener("submit", () => {
-  searchBarEvent();
-  console.log("test");
-});
+searchBar.addEventListener("submit", searchBarEvent);
