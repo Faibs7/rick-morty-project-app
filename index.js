@@ -72,3 +72,13 @@ prevButton.addEventListener("click", () => {
   prevPage();
   console.log(page);
 });
+
+function searchBarEvent(event) {
+  event.preventDefault();
+  console.log(event.target);
+}
+
+searchBar.addEventListener("submit", () => {
+  searchBarEvent();
+  console.log("test");
+});
