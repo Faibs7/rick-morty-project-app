@@ -6,18 +6,21 @@ const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
 );
 const searchBar = document.querySelector('[data-js="search-bar"]');
+const searchBarInput = document.querySelector('[data-js="search-input"]');
 const navigation = document.querySelector('[data-js="navigation"]');
 const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
+
 console.clear();
 // States
 let maxPage = 1;
 let page = 1;
-const searchQuery = "";
+let searchQuery = "";
 
 async function fetchCharacters() {
-  const url = `https://rickandmortyapi.com/api/character/?page=${page}`;
+  let url = `https://rickandmortyapi.com/api/character/?page=${page}`;
+  url += `&name=${searchQuery}`;
   try {
     const response = await fetch(url);
     if (response.ok) {
@@ -72,3 +75,12 @@ prevButton.addEventListener("click", () => {
   prevPage();
   console.log(page);
 });
+
+function searchBarEvent(event) {
+  event.preventDefault();
+  searchQuery = searchBarInput.value;
+  fetchCharacters();
+  console.log(searchBarInput.value);
+}
+
+searchBar.addEventListener("submit", searchBarEvent);
