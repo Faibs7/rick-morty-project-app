@@ -6,10 +6,12 @@ const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
 );
 const searchBar = document.querySelector('[data-js="search-bar"]');
+const searchBarInput = document.querySelector('[data-js="search-input"]');
 const navigation = document.querySelector('[data-js="navigation"]');
 const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
+
 console.clear();
 // States
 let maxPage = 1;
@@ -76,9 +78,9 @@ prevButton.addEventListener("click", () => {
 
 function searchBarEvent(event) {
   event.preventDefault();
-  searchQuery = searchBar.value;
+  searchQuery = searchBarInput.value;
   fetchCharacters();
-  console.log(searchBar.value);
+  console.log(searchBarInput.value);
 }
 
 searchBar.addEventListener("submit", searchBarEvent);
