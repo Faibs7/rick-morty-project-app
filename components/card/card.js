@@ -1,5 +1,4 @@
 import { cardContainer } from "../../index.js";
-
 export function createCharacterCard(image, name, status, type, occurrences) {
   const listItem = document.createElement("li");
   listItem.innerHTML = `
@@ -24,6 +23,5 @@ export function createCharacterCard(image, name, status, type, occurrences) {
         </dl>
       </div>
     </li>`;
-  cardContainer.append(listItem);
-  console.log("test");
+  return listItem;
 }
