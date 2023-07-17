@@ -1,4 +1,6 @@
 import { createCharacterCard } from "./components/card/card.js";
+import { createButton } from "./components/nav-button/nav-button.js";
+import { createSearchBar } from "./components/search-bar/search-bar.js";
 export const cardContainer = document.querySelector(
   '[data-js="card-container"]'
 );
@@ -8,9 +10,9 @@ const searchBarContainer = document.querySelector(
 const searchBar = document.querySelector('[data-js="search-bar"]');
 const searchBarInput = document.querySelector('[data-js="search-input"]');
 const navigation = document.querySelector('[data-js="navigation"]');
-const prevButton = document.querySelector('[data-js="button-prev"]');
-const nextButton = document.querySelector('[data-js="button-next"]');
-const pagination = document.querySelector('[data-js="pagination"]');
+//const prevButton = document.querySelector('[data-js="button-prev"]');
+//const nextButton = document.querySelector('[data-js="button-next"]');
+//const pagination = document.querySelector('[data-js="pagination"]');
 
 console.clear();
 // States
@@ -51,6 +53,19 @@ async function fetchCharacters() {
   }
 }
 fetchCharacters();
+
+//document.body.append(createSearchBar());
+//doucmemnt.body.append(createCard())
+//doucmemnt.body.append(create())
+//doucmemnt.body.append(createCard())
+
+const nextButton = createButton("Next");
+const prevButton = createButton("previous");
+const pagination = createButton("pagination");
+
+navigation.appendChild(prevButton);
+navigation.appendChild(pagination);
+navigation.appendChild(nextButton);
 
 function nextPage() {
   if (page < maxPage) {
