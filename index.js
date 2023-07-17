@@ -17,21 +17,29 @@ const page = 1;
 const searchQuery = "";
 async function fetchCharacters() {
   const url = "https://rickandmortyapi.com/api/character/?page=1";
-  const response = await fetch(url);
-  const data = await response.json();
-  console.log(data);
-  cardContainer.innerHTML = "";
-  data.results.forEach((character) => {
-    const { image, name, status, type, episode } = character;
-    const occurrences = episode.length;
-    const characterCard = createCharacterCard(
-      image,
-      name,
-      status,
-      type,
-      occurrences
-    );
-    cardContainer.append(characterCard);
-  });
+  try {
+    const response = await fetch(url);
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      cardContainer.innerHTML = "";
+      data.results.forEach((character) => {
+        const { image, name, status, type, episode } = character;
+        const occurrences = episode.length;
+        const characterCard = createCharacterCard(
+          image,
+          name,
+          status,
+          type,
+          occurrences
+        );
+        cardContainer.append(characterCard);
+      });
+    } else {
+      console.log("error");
+    }
+  } catch (error) {
+    console.log("Error!", error);
+  }
 }
 fetchCharacters();
