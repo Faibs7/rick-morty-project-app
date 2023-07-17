@@ -1,10 +1,8 @@
-import { cardList } from "../../index.js";
+import { cardContainer } from "../../index.js";
 
 export function createCharacterCard(image, name, status, type, occurrences) {
   const listItem = document.createElement("li");
   listItem.innerHTML = `
-  </div>
-  <ul class="card-container" data-js="card-container">
     <li class="card">
       <div class="card__image-container">
         <img
@@ -25,8 +23,7 @@ export function createCharacterCard(image, name, status, type, occurrences) {
           <dd class="card__info-description">${occurrences}</dd>
         </dl>
       </div>
-    </li>
-  </ul>`;
-  cardList.append(listItem);
+    </li>`;
+  cardContainer.append(listItem);
   console.log("test");
 }
